@@ -21,21 +21,34 @@ brew "<formula>"
 | --- | --- |
 | `arx` | Local arXiv cache with CLI (`arx`), daemon (`arxd`), and MCP server (`arx-mcp`) |
 
-## Updating a formula for a new release
+## Release flow
 
-1. Tag a release in the upstream repository (e.g. `v0.2.0`).
-2. Compute the source tarball checksum:
+Tagging `vX.Y.Z` in [eric-tramel/arx](https://github.com/eric-tramel/arx) is
+fully automated end to end (requires the `TAP_BUMP_TOKEN` secret in that repo):
+
+1. The upstream release workflow computes the source tarball sha256 and opens
+   a `bump-arx-vX.Y.Z` pull request here updating `url`/`sha256` in
+   `Formula/arx.rb`.
+2. `brew test-bot` builds the formula from source on all CI platforms and
+   uploads bottles as artifacts.
+3. When test-bot succeeds on a non-draft `bump-arx-*` pull request, the
+   **brew pr-pull** workflow runs automatically: it merges the bump, attaches
+   the bottle block, uploads bottles to a GitHub release on this repository,
+   and pushes to `main`.
+
+Draft `bump-arx-*` pull requests (opened by upstream token-validation runs)
+are never auto-published.
+
+### Manual fallback
+
+1. Update `url` and `sha256` in `Formula/arx.rb` and open a pull request:
 
    ```bash
-   curl -fsSL "https://github.com/eric-tramel/arx/archive/refs/tags/v0.2.0.tar.gz" | shasum -a 256
+   curl -fsSL "https://github.com/eric-tramel/arx/archive/refs/tags/vX.Y.Z.tar.gz" | shasum -a 256
    ```
 
-3. Update `url` and `sha256` in `Formula/arx.rb` and open a pull request.
-4. Once `brew test-bot` is green on the PR, run the **brew pr-pull** workflow
+2. Once `brew test-bot` is green, run the **brew pr-pull** workflow
    (Actions tab) with the PR number to publish bottles and merge.
-
-The upstream [`arx` release workflow](https://github.com/eric-tramel/arx/blob/main/.github/workflows/release.yml)
-automates steps 2–3 when its `TAP_BUMP_TOKEN` secret is configured.
 
 ## Documentation
 
