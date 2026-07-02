@@ -27,8 +27,8 @@ class Arx < Formula
     # guard is a no-op for later releases.
     rm(".cargo/config.toml") if File.exist?(".cargo/config.toml")
 
-    # Share one target dir across the three workspace binaries so
-    # dependencies compile once instead of three times.
+    # Reuse one target directory across workspace binaries so dependencies
+    # compile once instead of once per cargo install.
     ENV["CARGO_TARGET_DIR"] = (buildpath/"target").to_s
 
     system "cargo", "install", *std_cargo_args(path: "crates/arx-cli")
