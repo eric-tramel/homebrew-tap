@@ -14,8 +14,10 @@ class Arx < Formula
   depends_on "rust" => :build
 
   def install
-    # v0.1.0 ships a developer-only .cargo/config.toml that forces
-    # rustc-wrapper = "sccache"; Homebrew builders do not have sccache.
+    # Tarballs up to and including v0.1.0 ship a developer-only
+    # .cargo/config.toml forcing rustc-wrapper = "sccache"; Homebrew
+    # builders do not have sccache. Removed upstream in e0627b0, so this
+    # guard is a no-op for later releases.
     rm(".cargo/config.toml") if File.exist?(".cargo/config.toml")
 
     # Share one target dir across the three workspace binaries so
