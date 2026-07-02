@@ -11,6 +11,13 @@ class Arx < Formula
     strategy :github_latest
   end
 
+  bottle do
+    root_url "https://github.com/eric-tramel/homebrew-tap/releases/download/arx-0.1.0"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "9351c6cb7e7bc2310b06791b2a24389e5a4236f701124a4f66ab1e8b19f44c2a"
+    sha256 cellar: :any,                 x86_64_linux: "95ef77b047ec6ba9708a92f705b7043644bdedaaba68ade8b5a6fdd1bcc51f84"
+  end
+
   depends_on "rust" => :build
 
   def install
