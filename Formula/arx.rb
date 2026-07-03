@@ -12,10 +12,10 @@ class Arx < Formula
   end
 
   bottle do
-    root_url "https://github.com/eric-tramel/homebrew-tap/releases/download/arx-0.1.1"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "479b423cf326b8aba14c6e816a391c92e3f929323d6093247dc5c4e4d1ee5ebe"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b8de7aba09f93c5487685ad7d312d84e0cc05f4f8dbf278468b93d4b851ddaaf"
-    sha256 cellar: :any,                 x86_64_linux:  "bcd1d177671577b8065dcd07aec456bb8268da83f19c203527a8c1abc6261fcc"
+    root_url "https://github.com/eric-tramel/homebrew-tap/releases/download/arx-0.1.2"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6e21e9f3c28482ae27087d3cf08c8abcbd1e0bf23bb694d6696f6c60e2aa79d7"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bf45f0e3bb5e9d189bda0e13bf9981a17ae1302fbbaa4622f7159c2cd837a640"
+    sha256 cellar: :any,                 x86_64_linux:  "9c9e5deab22f76d85051c5f4a2ae8c027e89b971ca36bc4a2cfbc3fe755584bb"
   end
 
   depends_on "rust" => :build
