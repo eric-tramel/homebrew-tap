@@ -1,8 +1,8 @@
 class Arx < Formula
   desc "Local arXiv cache with CLI, daemon, and MCP server"
   homepage "https://github.com/eric-tramel/arx"
-  url "https://github.com/eric-tramel/arx/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "4b46d1f170cf9227ca7fcb891da70d1e4a15fea09f13808c8d145180c13eb120"
+  url "https://github.com/eric-tramel/arx/archive/refs/tags/v0.1.2.tar.gz"
+  sha256 "70e046e59048ab6658d41cda4cded0781894fcc0ef11e0141e48968fc477abd8"
   license "MIT"
   head "https://github.com/eric-tramel/arx.git", branch: "main"
 
